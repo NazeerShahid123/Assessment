@@ -6,7 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "dev:ssr": "ng run Assessment:serve-ssr",
+    "serve:ssr": "node dist/server/main.js",
+    "build:ssr": "ng build && ng run Assessment:server",
+    "prerender": "ng run Assessment:prerender"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +24,7 @@
     "@angular/platform-server": "^17.3.11",
     "@angular/router": "^17.3.11",
     "@angular/ssr": "^17.3.8",
+    "express": "^4.18.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.7"
@@ -28,8 +33,10 @@
     "@angular-devkit/build-angular": "^17.3.8",
     "@angular/cli": "~17.3.8",
     "@angular/compiler-cli": "^17.3.11",
+    "@types/express": "^4.17.17",
     "@types/jasmine": "~4.3.0",
     "autoprefixer": "^10.4.19",
+    "browser-sync": "^3.0.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
