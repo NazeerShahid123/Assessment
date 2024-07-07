@@ -1,0 +1,10 @@
+<header class="flex justify-between items-center bg-pink-600 text-white p-4">
+    @if (!isSelected)
+    {
+      <a routerLink="/" routerLinkActive="active" (click)="setSelected(true)">Back</a>
+    }
+    @else{
+      <h1>{{ title }}</h1>
+    }
+  </header>
+  
