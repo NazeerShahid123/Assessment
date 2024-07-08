@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router'; // Import Router for navigation state
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule,CommonModule], // Add Router to imports
+  imports: [RouterModule, CommonModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
   title = 'Assessment App';
@@ -17,11 +17,9 @@ export class HeaderComponent {
 
   ngOnInit() {
     if (this.router.url === '/') {
-      this.isSelected = true; // Ensure selection for empty path
-    }
-    else
-    {
-      this.isSelected = false
+      this.isSelected = true;
+    } else {
+      this.isSelected = false;
     }
   }
 

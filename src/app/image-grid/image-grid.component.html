@@ -3,8 +3,12 @@
   <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 w-full max-w-8xl">
     <div class="inline-block min-w-full py-16 sm:px-6 lg:px-8">
       <div class="overflow-hidden shadow-lg rounded-lg">
-        <table class="min-w-full text-left text-sm font-light text-surface dark:text-white">
-          <thead class="border-b border-neutral-200 font-medium dark:border-white/10 bg-blue-600 text-white">
+        <table
+          class="min-w-full text-left text-sm font-light text-surface dark:text-white"
+        >
+          <thead
+            class="border-b border-neutral-200 font-medium dark:border-white/10 bg-blue-600 text-white"
+          >
             <tr>
               <th scope="col" class="px-6 py-4 text-lg font-bold">ID</th>
               <th scope="col" class="px-6 py-4 text-lg font-bold">Album ID</th>
@@ -14,27 +18,40 @@
           </thead>
           <tbody>
             @if (isLoading$ | async) {
-              <tr class="text-center py-8">
-                <td colspan="4">
-                  <div class="loader">Loading...</div>
-                </td>
-              </tr>
-            }
-            @for (photo of photos;  track photo) {
-              <tr class="border-b border-neutral-200 dark:border-white/10 hover:bg-blue-50 transition-colors duration-200 cursor-pointer" (click)="onPhotoClick(photo)">
-                <td class="whitespace-nowrap px-6 py-4 text-gray-700">{{ photo.id }}</td>
-                <td class="whitespace-nowrap px-6 py-4 text-gray-700">{{ photo.albumId }}</td>
-                <td class="whitespace-nowrap px-6 py-4 text-gray-700">{{ photo.title }}</td>
-                <td class="whitespace-nowrap px-6 py-4">
-                  <img [ngSrc]="photo.url"  priority [alt]="photo.title" width="78" height="78" class="object-cover rounded-md shadow-sm">
-                </td>
-              </tr>
-            }
-
-            @if (errorMessage) {
-              <tr class="text-center text-red-500">
-                <td colspan="4">{{ errorMessage }}</td>
-              </tr>
+            <tr class="text-center py-8">
+              <td colspan="4">
+                <div class="loader">Loading...</div>
+              </td>
+            </tr>
+            } @for (photo of photos; track photo) {
+            <tr
+              class="border-b border-neutral-200 dark:border-white/10 hover:bg-blue-50 transition-colors duration-200 cursor-pointer"
+              (click)="onPhotoClick(photo)"
+            >
+              <td class="whitespace-nowrap px-6 py-4 text-gray-700">
+                {{ photo.id }}
+              </td>
+              <td class="whitespace-nowrap px-6 py-4 text-gray-700">
+                {{ photo.albumId }}
+              </td>
+              <td class="whitespace-nowrap px-6 py-4 text-gray-700">
+                {{ photo.title }}
+              </td>
+              <td class="whitespace-nowrap px-6 py-4">
+                <img
+                  [ngSrc]="photo.url"
+                  priority
+                  [alt]="photo.title"
+                  width="78"
+                  height="78"
+                  class="object-cover rounded-md shadow-sm"
+                />
+              </td>
+            </tr>
+            } @if (errorMessage) {
+            <tr class="text-center text-red-500">
+              <td colspan="4">{{ errorMessage }}</td>
+            </tr>
             }
           </tbody>
         </table>

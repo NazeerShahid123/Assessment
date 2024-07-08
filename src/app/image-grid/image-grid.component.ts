@@ -15,24 +15,27 @@ interface Photo {
 
 @Component({
   selector: 'app-image-grid',
-  imports: [NgOptimizedImage,CommonModule,HeaderComponent ],
+  imports: [NgOptimizedImage, CommonModule, HeaderComponent],
   standalone: true,
   templateUrl: './image-grid.component.html',
-  styleUrls: ['./image-grid.component.scss']
+  styleUrls: ['./image-grid.component.scss'],
 })
-
 export class ImageGridComponent implements OnInit {
   photos: Photo[] = [];
   errorMessage: string | null = null;
   isLoading$ = new BehaviorSubject<boolean>(true);
 
-  constructor(private http: HttpClient = Inject(HttpClient),private router: Router) {}
+  constructor(
+    private http: HttpClient = Inject(HttpClient),
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.http.get<Photo[]>('https://jsonplaceholder.typicode.com/photos')
+    this.http
+      .get<Photo[]>('https://jsonplaceholder.typicode.com/photos')
       .pipe(
-        map(photos => this.photos = photos),
-        catchError(error => {
+        map((photos) => (this.photos = photos)),
+        catchError((error) => {
           this.errorMessage = 'An error occurred while fetching photos.';
           console.error(error);
           this.isLoading$.next(false);

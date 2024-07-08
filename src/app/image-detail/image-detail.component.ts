@@ -8,23 +8,22 @@ import { HeaderComponent } from '../header/header.component';
   standalone: true,
   imports: [HeaderComponent],
   templateUrl: './image-detail.component.html',
-  styleUrl: './image-detail.component.scss'
+  styleUrl: './image-detail.component.scss',
 })
 export class ImageDetailComponent {
   selectedPhoto: any;
-  photoId: any ;
+  photoId: any;
 
-  constructor(
-    private route: ActivatedRoute,
-    private http: HttpClient
-  ) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
   ngOnInit() {
     this.photoId = this.route.snapshot.paramMap.get('id');
     if (this.photoId) {
-      this.http.get<any>(`https://jsonplaceholder.typicode.com/photos/${this.photoId}`)
-        .subscribe(photo => {this.selectedPhoto = photo;
-          console.log(this.selectedPhoto,'data')
+      this.http
+        .get<any>(`https://jsonplaceholder.typicode.com/photos/${this.photoId}`)
+        .subscribe((photo) => {
+          this.selectedPhoto = photo;
+          console.log(this.selectedPhoto, 'data');
         });
     }
   }

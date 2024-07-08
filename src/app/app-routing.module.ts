@@ -5,14 +5,16 @@ import { ImageDetailComponent } from './image-detail/image-detail.component';
 const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./image-grid/image-grid.component').then((m) => m.ImageGridComponent),
+    loadComponent: () =>
+      import('./image-grid/image-grid.component').then(
+        (m) => m.ImageGridComponent
+      ),
   },
   { path: 'photos/:id', component: ImageDetailComponent },
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
